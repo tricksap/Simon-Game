@@ -7,7 +7,7 @@ $(".btn").click(function () {
     userClickedPattern.push(userChosenColour);
     playSound(userChosenColour  )
  });
-
+ 
 function nextSequence(){
     var randomNumber = Math.floor(Math.random()*4)
     var randomChosenColour = buttonColors[randomNumber];
