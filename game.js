@@ -5,7 +5,9 @@ var userClickedPattern= []
 $(".btn").click(function () { 
     var userChosenColour= $(this).attr("id");
     userClickedPattern.push(userChosenColour);
-    playSound(userChosenColour  )
+    playSound(userChosenColour)
+
+    animatePress(userChosenColour)
  });
  
 function nextSequence(){
@@ -22,4 +24,12 @@ function playSound(color){
 
 }
 
+function animatePress(currentColor){
+   $("#" +  currentColor).addClass("pressed");
+   
+   setTimeout(function () {
+    $("#" + currentColor).removeClass("pressed");
+  }, 100);
+    
+}
    
