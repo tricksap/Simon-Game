@@ -3,6 +3,16 @@ var gamePattern = [];
 var userClickedPattern= [];
 var gameStart= false;
 var level = 0;  
+var high = 0
+function highScore(){
+    
+    if (level > high){
+        high = level - 1;
+    }
+    $("#high-score").text("Highscore:"+ high);
+
+
+}
 
 
 
@@ -19,10 +29,23 @@ function checkAnswer(currentLevel){
         }
     }
     else{
-        console.log("wrong")
+        playSound("wrong")
+        $("body").addClass("game-over")    
+
+        setTimeout(function(){
+            $("body").removeClass("game-over");    
+        },200)
+    $("#level-title").text("Game Over, Press Any Key to Restart");
+    highScore()
+    startOver();
     }
 }
 
+function startOver(){
+    level=0;
+    gamePattern=[];
+    gameStart=false;
+}
 
 $(document).keypress(function(){
     if (!gameStart){
